@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Title</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<script
+	  src="http://code.jquery.com/jquery-1.12.4.js"
+	  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+	  crossorigin="anonymous"></script>
+</head>
+<body>
+	<a href="javascript:void(0);" onclick="addArray('a','1');">add value 1</a>
+	<a href="javascript:void(0);" onclick="addArray('b','2');">add value 2</a>
+	<div class="data"></div>
+	<script>
+		$(document).ready(function(){
+
+		});
+		var array = [];
+		var data = {};
+		function addArray(name,val){
+			data = {name:name,val:val};
+			let checkDup = checkArray(array,'name',name,val);
+			if(!checkDup){
+				array.push(data);
+			} else {
+				console.log(checkDup);
+			}
+			console.log(array);
+		}
+		function checkArray(array, attr, attrValue, value){
+	    for(var i = 0; i < array.length; i += 1) {
+	        if(array[i][attr] === attrValue) {
+	        	array[i]['val'] = String(parseInt(array[i]['val'])+parseInt(value));
+	          // return i;
+	          return true;
+	        }
+	    }
+	    // return -1;
+	    return false;
+		}
+	</script>
+</body>
+</html>
